@@ -1,0 +1,180 @@
+.bc-cart {
+    max-width: none;
+    padding: 60px 0;
+}
+
+.bc-cart__empty {
+    border-top: none;
+
+}
+
+.bc-cart-container {
+    @include flex();
+    @include flex-justify(space-between);
+
+    @media only screen and (max-width: 980px) {
+        display: block;
+    }
+}
+
+.bc-cart-items {
+    width: 100%;
+    padding-right: 125px;
+
+    @media only screen and (max-width: 1200px) {
+        padding-right: 60px;
+    }
+
+    @media only screen and (max-width: 980px) {
+        margin-bottom: 40px;
+        padding-right: 0;
+    }
+}
+
+.bc-cart-header {
+    > div {
+        font-size: 1.5em;
+        padding: 15px 0;
+    }
+}
+
+.bc-cart-item {
+    padding: 10px 0;
+}
+
+.bc-cart-item-meta {
+    align-self: center;
+}
+
+.bc-cart-item-quantity {
+    input.bc-cart-item__quantity-input {
+        border: none;
+        font-size: 1.6em;
+        padding: 0;
+        margin: 0;
+        //width: 100%;
+        -moz-appearance:textfield;
+        text-align: left;
+
+        &:focus {
+            //box-shadow: none;
+            border: 1px solid #74b44d;
+            //width: none;
+            padding: 2px;
+        }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none; 
+            margin: 0;
+        }
+    }
+}
+
+.bc-cart-item__remove-button {
+    border: none;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999em;
+    overflow: hidden;
+    background: url(../images/global/cross.svg) no-repeat center;
+    @include transition(0.3s);
+    
+    &:hover {
+        @include opacity(0.4);
+        background: url(../images/global/cross.svg) no-repeat center;
+    }
+}
+
+.bc-cart-item-product {
+    flex: 1 1 auto;
+    @include flex();
+    padding-right: 15px;
+}
+
+.bc-cart-header__qty, .bc-cart-item-quantity,
+.bc-cart-header__total, .bc-cart-item-total-price {
+    margin-left: 0;
+    flex: 0 0 42px;
+
+    @media only screen and (min-width: 768px) {
+        flex: 0 0 70px;
+    }
+
+    @media only screen and (min-width: 1200px) {
+        flex: 0 0 100px;
+    }
+}
+
+.bc-cart-header__remove, .bc-cart-item-remove {
+    flex: 0 0 40px;
+}
+
+.bc-cart-summary {
+    flex: 0 0 400px;
+    width: 400px;
+
+    @media only screen and (max-width: 980px) {
+        margin-left: auto;
+    }
+
+    @media only screen and (max-width: 460px) {
+        width: 100%;
+    }
+}
+
+.bc-cart-summary-detail {
+    box-shadow: 0 0 35px 0 rgba(63,59,50,0.15);
+
+    h6 {
+        padding: 10px 30px;
+        border-bottom: 1px solid $lightgrey;
+        margin-bottom: 0;
+    }
+
+    .bc-cart-tax {
+        padding: 10px 30px;
+        @include flex-justify(space-between);
+
+        span.bc-cart-tax__label {
+            text-align: left;
+            font-size: 1.3em;
+        }
+
+        span.bc-cart-tax__amount {
+            flex: 1 1 auto;
+            text-align: right;
+            font-weight: 400;
+            font-size: 1.3em;
+        }
+    }
+
+    .bc-cart-subtotal {
+        padding: 10px 30px;
+        @include flex-justify(space-between);
+        background-color: $green-background;
+
+        .bc-cart-subtotal__label {
+            text-align: left;
+            font-size: 1.3em;
+        }
+
+        .bc-cart-subtotal__amount {
+            flex: 1 1 auto;
+            text-align: right;
+            font-size: 1.3em;
+        }
+    }
+}
+
+button.bc-btn.bc-cart-actions__checkout-button {
+    @extend .btn;
+    @extend .btn.primary;
+    width: 100%;
+    max-width: none;
+}
+
+.bc-cart-actions .btn.secondary {
+    width: 100%;
+    margin-top: 30px;
+}

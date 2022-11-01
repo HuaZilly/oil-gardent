@@ -1,0 +1,270 @@
+@import 'global';
+
+
+.body-og-details{
+    padding: 50px 0;
+    background-color: $lightgreen;
+}
+
+.row{
+    display: flex;
+    flex-flow: wrap;
+
+    .cols{
+        margin: 3%;
+    }
+    
+    div.menu{
+        flex: 1 20%;
+        //border: 1px solid black;
+        margin-left: 0;
+        
+        @media screen and (max-width: 900px){
+            flex: 1 100%;
+            margin: 3% 0;
+            display: none;
+        }
+       
+    }
+    div.body-details{
+        flex: 2 45%;
+        //border: 1px solid black;
+        margin-right: 0;
+        width: 100%;
+        @media screen and (max-width: 900px){
+            flex: 1 100%;
+            margin: 3% 0;
+        }
+
+
+        
+       .question{
+           border-top: 1px solid $grey-lines;
+           padding-top: 40px;
+           padding-bottom: 35px;
+           margin: 0;
+
+           h5{
+                font-family: $heading-font-family !important;
+                font-size: 22px !important;
+                color: $black !important;
+                font-weight: 100 !important;
+                background-image: url('../images/global/plus-green.png');
+                background-repeat: no-repeat;
+                background-position-x: right;
+                background-position-y: top;
+                position: relative;
+                padding-right: 10%;
+
+                @media screen and (max-width: 900px){
+                    background-image: none !important;
+                    padding-right: 0 !important;
+                }
+
+                &:hover{
+                    cursor: pointer;
+                }
+           }
+
+           .answer.content{
+               display: none;
+                &.active{
+                    display: block;
+                    //margin-right: 0;
+                    margin-left:0;
+                    margin-top: 25px;
+                }
+
+           }
+       }
+        
+        
+    }
+}
+
+#menu-customer-service-submenu{
+    li{
+        a{
+            font-weight: 600;
+            line-height: 40px;
+        }
+        &.current-menu-item{
+            a{
+                color: $black;
+            }
+        }
+    }
+}
+.menu-customer-service-submenu-container{
+    position: sticky;
+    top: 190px;
+}
+
+.custom-form{
+    display: flex;
+    flex-flow: wrap;
+
+    @media screen and (max-width: 900px){
+        flex-direction: column;
+    }
+    
+
+    div.form{
+        flex: 1 65%;
+        background-color: $white;
+        box-shadow: 0 0 35px 0 rgba(63,59,50,0.15);
+        padding: 5% 7%;
+
+        @media screen and (max-width: 900px){
+            flex: 2 100%;
+            margin: 3% 0;
+        }
+
+        h3{
+            margin-bottom: 51px;
+            font-weight: 100;
+        }
+
+        input, label, textarea{
+            width: 100%;
+        }
+
+        label{
+            font-size: 15px;
+            color: $grey;
+        }
+
+        input[type=text], input[type=email] {
+            height: 33px;
+            
+        }
+
+        input[type=text], input[type=email] ,textarea{
+            margin-top: 5px;
+            margin-bottom: 40px;
+            border: none;
+            border-bottom: 1px solid $lightgrey;
+            font-size: 14px;
+            padding: 0 5px;
+
+            &:focus{
+                border-bottom: 1px solid $green;
+                //box-shadow: 0 0 35px 0 rgba(63,59,50,0.15);
+            }
+        }
+
+        div.wpcf7-response-output {
+            border: none;
+            font-size: 1.4em;
+            padding: 15px;
+            background-color: rgba($flag-red, 0.2);
+            text-align: center;
+
+            &.wpcf7-mail-sent-ok {
+                background-color: $green-background;
+            }
+        }
+    }
+    
+    div.contact-info{
+        flex: 2 15%;
+        margin-left: 6%;
+
+        @media screen and (max-width: 900px){
+            flex: 1 100%;
+            margin: 3% 0;
+        }
+
+        p{
+            line-height: 23px;
+        }
+
+        ul{
+            margin-bottom: 25px;
+        }
+
+        ul.bold{
+            li{
+                font-weight: bold !important;
+            }
+        }
+
+        ul.available-days{
+            li{
+                margin-bottom: 15px;
+                strong{
+                    font-weight: bold !important;
+                }
+            }
+        }
+    }
+
+}
+
+.bc-subnav__list{
+    .bc-link.bc-subnav__link{
+        font-size: 0.9375rem;
+        font-weight: 500;
+    }
+}
+
+.bc-form-terms{
+    background-color: #74b44d !important;
+
+    .bc-form__label.bc-gift-purchase__form-label.bc-form-control-required{
+        color: #fff !important;
+    }
+
+    #bc-gift-purchase-terms{
+        height: 17px !important;
+        width: 17px !important;
+        @media screen and (max-width: 500px){
+            margin-bottom: 10px;
+        }
+    }
+    
+    
+}
+
+.bc-gift-page{
+    .bc-gift-balance__container{
+        background-color: #74b44d;
+        color: #fff;
+
+        .bc-gift-balance__title,.bc-gift-balance__code{
+            font-size: 1rem;
+        }
+    }p
+    .bc-form__label.bc-gift-balance__form-label.bc-form-control-required,
+    .bc-form__label.bc-gift-purchase__form-label.bc-form-control-required,
+    .bc-form__label.bc-gift-purchase__form-label,
+    .bc-form__label.bc-gift-balance__form-label.bc-form-control-required{
+        font-size: 1.6em !important;
+        font-weight: 400 !important;
+        font-style: normal !important;
+        color: #231f20 !important;
+    }
+    .bc-btn.bc-gift-balance-form-submit,.bc-btn.bc-gift-purchase-form-submit{
+        background-color: #74b44d;
+        color: #fff;
+        font-size: 1.2em;
+        font-weight: 500;
+        letter-spacing: .1667em;
+        text-align: center;
+        min-width: 170px;
+        padding: 22px 10px 21px;
+        text-transform: uppercase;
+        transition: all .3s cubic-bezier(.25,.46,.45,.94);
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+.bc-gift-instructions{
+
+}
+
+footer{
+    padding-top: 40px;
+}

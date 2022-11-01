@@ -1,0 +1,1 @@
+<?php /* Empty folder ensuring ACF fields are synced across environments */ ?>
