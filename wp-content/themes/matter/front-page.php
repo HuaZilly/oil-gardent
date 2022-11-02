@@ -133,4 +133,9 @@ get_header() ?>
 
 <?php echo do_shortcode('[instagram-feed feed=1]'); ?>
 
+<?php $additionalContent = get_field('homepage_tag', 'options'); ?>
+<?php if($additionalContent): ?>
+    <?= $additionalContent ?>
+<?php endif;?>
+
 <?php get_footer() ?>

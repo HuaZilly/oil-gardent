@@ -130,4 +130,22 @@ $itemsArray = [];
             "total": <?php echo $cart['base_amount']['raw'];?>,
             "line_items": <?php echo json_encode($itemsArray); ?>
     }
+
+    nostojs(api => {
+        api.defaultSession()
+            .setCart({
+                items: [
+                    <?php foreach ( $cart['items'] as $item ): ?>                <?php
+                    $productLoad = new \BigCommerce\Post_Types\Product\Product($item['post_id']);
+                    $unitPrice = $productLoad->price;
+                    $productSku = $item["sku"]["product"];
+                    ?>                    {
+                        name: '<?= $item["name"] ?>',
+                        price_currency_code: 'AUD',
+                        product_id: <?= $item["product_id"] ?>,
+                        quantity: <?= $item["quantity"] ?>,
+                        <?php if($productSku): ?>sku_id: <?= $productSku ?>, <?php endif;?>                        <?php if($unitPrice): ?>unit_price: <?= $unitPrice ?> <?php endif;?>                    },
+                    <?php endforeach; ?>                ]
+            }).viewCart().update()
+    });
 </script>
