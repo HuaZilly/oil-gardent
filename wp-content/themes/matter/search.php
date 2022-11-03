@@ -7,7 +7,7 @@
         'bigcommerce_product' => 'Product',
         'post' => 'Blog'
     );
-
+    $searchTerm = get_search_query();
     if ( have_posts() ) :
         ?>
         <section id="hero">
@@ -59,5 +59,11 @@
     else :
         echo "<div style='padding: 20% 0;text-align:center;'><h3 >No results found...</h3><a href='".home_url('/products')."' class='btn primary'>Shop Around</a></div>";
     endif;
+    ?>
 
-    get_footer();
+    <?php $searchTag = get_field('search_tag', 'options') ?>
+    <?php if($searchTag): ?>
+        <?= str_replace('replace_by_search_query', $searchTerm , $searchTag) ?>
+    <?php endif; ?>
+
+<?php get_footer(); ?>
