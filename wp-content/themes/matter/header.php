@@ -39,7 +39,7 @@
         <!-- END Rakuten Marketing Tracking -->
         <link rel='stylesheet' id='loyalty-style-css'
               href='<?php  echo get_bloginfo('stylesheet_directory'); ?>/css/loyalty.min.css?ver=1.0' type='text/css' media='all' />
-
+        <?php wp_enqueue_style( 'custom', get_template_directory_uri().'/css/custom.css' ); ?>
         <?php
         $type = 'Content';
         if(is_page( 'home' )) {
