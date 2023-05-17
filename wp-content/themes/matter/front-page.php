@@ -5,10 +5,15 @@ define("CUSTOM_JS", "homepage");
 
 get_header() ?>
 
-<?php $hero = get_field('hero'); ?>
+<?php
+    $hero = get_field('hero');
+    $slideIndex = 0;
+    $dotIndex = 0;
+; ?>
 <section id="hero">
     <?php $active = " active"; foreach ($hero['slides'] as $slide) : ?>
-    <div class="slide<?php echo $active; ?>">
+    <?php $slideIndex++; ?>
+    <div class="slide<?php echo $active; ?> swiper-slide" slideIndex="<?= $slideIndex ?>" >
         <div class="slide-image"
             style="background-image: url(<?php echo $slide['background_image'] ?>);"
             data-parallax data-parallax-speed="-3" data-parallax-mobile-speed="-1.5" data-parallax-position="centre" data-parallax-scale="1.2"></div>
@@ -22,6 +27,33 @@ get_header() ?>
     </div>
     <?php $active = ""; endforeach; ?>
 </section>
+<section class="custom-dots">
+    <ul>
+        <?php $dotClass = ' dot-active'; foreach ($hero['slides'] as $slide) : ?>
+            <?php
+                $dotIndex++;
+                $bottomIcon = $slide['bottom_icon'];
+                $bottomText = $slide['bottom_text'];
+                $bottomTextColour = $slide['bottom_text_colour'];
+
+            ?>
+            <?php if ($bottomIcon || $bottomText): ?>
+                <li class="dot-slide <?= $dotClass ?> " slideIndex="<?= $dotIndex ?> ">
+                    <div class="content">
+                        <?php if ($bottomIcon):?>
+                            <img srcset="<?= $bottomIcon ?>" alt="Icon" width="100" height="100" />
+                        <?php endif; ?>
+                        <?php if ($bottomText):?>
+                            <p style="color: <?= $bottomTextColour ? $bottomTextColour : 'white' ?>"><?= $bottomText ?></p>
+                        <?php endif; ?>
+                    </div>
+                </li>
+            <?php endif; ?>
+
+        <?php $dotClass = ''; endforeach; ?>
+    </ul>
+</section>
+
 
 <section class="acknowledgement"><h4>Oil Garden wishes to acknowledge the Traditional Custodians of the land on which we work and live. We pay our respects to Elders – past, present and emerging.</h4></section>
 

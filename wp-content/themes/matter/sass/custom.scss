@@ -1,3 +1,37 @@
+.custom-dots {
+  background: black;
+  ul {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    li {
+      padding: 30px 10px;
+      cursor: pointer;
+      transition: all .5s ease-in-out;
+      border-top: 1px solid transparent;
+      &.dot-active {
+        border-top: 1px solid white;
+      }
+    }
+  }
+  .content {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    p {
+      margin: 0;
+      line-height: 40px;
+      font-size: 15px;
+      padding-left: 10px;
+    }
+    img {
+      width: 38px;
+      height: 38px;
+    }
+  }
+}
+
+
 @media screen and (min-width: 1024px) and (max-width: 1700px) {
   header {
     #main-navigation {
@@ -199,6 +233,29 @@
             top: 110px;
           }
         }
+      }
+    }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .custom-dots {
+    ul {
+      li {
+        &:hover,
+        &:active,
+        &:focus {
+          border-top: 1px solid white;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .custom-dots {
+    .dot-slide {
+      padding: 16px 10px;
+      p {
+        display: none;
       }
     }
   }

@@ -12,10 +12,37 @@
 
         current.removeClass('active');
         next.addClass('active');
+
+        const dotCurrentActive = $('.custom-dots .dot-active');
+        let dotNext = dotCurrentActive.next(),
+            dotCurrent = $(".custom-dots  .dot-slide");
+        if (dotNext.length === 0) dotNext = dotCurrent.first();
+        dotCurrentActive.removeClass('dot-active');
+        dotNext.addClass('dot-active');
+
+        dotCurrent.on('click', function (){
+            clearInterval(setTime)
+        })
+
     }
 
     if ($("#hero .slide").length > 1) {
-        setInterval(moveSlide, 5000);
+        let timer = setInterval(moveSlide, 5000);
+        let dotCurrent = $(".custom-dots  .dot-slide");
+        dotCurrent.on('click', function () {
+            clearInterval(timer);
+            timer = setInterval(moveSlide, 5000);
+
+            let slideIndex = $(this).attr('slideIndex'),
+                slideHeroIndex = $('[slideIndex='+ slideIndex +']'),
+                heroBanner = $('#hero'),
+                heroSlide = heroBanner.find(slideHeroIndex);
+
+            dotCurrent.removeClass('dot-active');
+            $(this).addClass('dot-active');
+            $(heroBanner.find('.slide')).removeClass('active');
+            heroSlide.addClass('active')
+        });
     }
 
     /***
