@@ -34,7 +34,7 @@ get_header() ?>
                 $dotIndex++;
                 $bottomIcon = $slide['bottom_icon'];
                 $bottomText = $slide['bottom_text'];
-                $bottomTextColour = $slide['bottom_text_colour'];
+                $bottomTextColour = $slide['bottom_colour'];
 
             ?>
             <?php if ($bottomIcon || $bottomText): ?>
