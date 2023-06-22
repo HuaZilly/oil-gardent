@@ -201,12 +201,20 @@
                             </div>
                             <div class="banner-items">
 		                        <?php
-		                        if (isset($banners[$count])) $menu_banners = $banners[$count];
-		                        else $menu_banners = $banners[$banner_groups-1];
+                                    $menu_banners = $banners[$menu_index];
+                                    $banner1 = $menu_banners['banner_1'];
+                                    $banner2 = $menu_banners['banner_2'];
 		                        ?>
-                                <a href="<?php echo $menu_banners['banner_1']['href'] ?>">
-                                    <img src="<?php echo $menu_banners['banner_1']['image'] ?>" />
-                                </a>
+                                <?php if ($banner1['image']):?>
+                                    <a href="<?= $banner1['href'] ?>">
+                                        <img src="<?= $banner1['image'] ?>" alt="Banner image" width="200" height="200" />
+                                    </a>
+                                <?php endif;?>
+                                <?php if ($banner2['image']):?>
+                                    <a href="<?= $banner2['href'] ?>">
+                                        <img src="<?= $banner2['image'] ?>" alt="Banner image" width="200" height="200" / />
+                                    </a>
+                                <?php endif; ?>
                             </div>
                         </div>
                         <?php else:?>
@@ -246,16 +254,21 @@
                                         </div>
                                     </div>
                                     <div class="banner-items">
-			                            <?php
-			                            if (isset($banners[$count])) $menu_banners = $banners[$count];
-			                            else $menu_banners = $banners[$banner_groups-1];
-			                            ?>
-                                        <a href="<?php echo $menu_banners['banner_1']['href'] ?>">
-                                            <img src="<?php echo $menu_banners['banner_1']['image'] ?>" />
-                                        </a>
-                                        <a href="<?php echo $menu_banners['banner_2']['href'] ?>">
-                                            <img src="<?php echo $menu_banners['banner_2']['image'] ?>" />
-                                        </a>
+                                        <?php
+                                            $menu_banners = $banners[$menu_index];
+                                            $banner1 = $menu_banners['banner_1'];
+                                            $banner2 = $menu_banners['banner_2'];
+                                        ?>
+                                        <?php if ($banner1['image']):?>
+                                            <a href="<?= $banner1['href'] ?>">
+                                                <img src="<?= $banner1['image'] ?>" alt="Banner image" width="200" height="200" />
+                                            </a>
+                                        <?php endif;?>
+                                        <?php if ($banner2['image']):?>
+                                            <a href="<?= $banner2['href'] ?>">
+                                                <img src="<?= $banner2['image'] ?>" alt="Banner image" width="200" height="200" / />
+                                            </a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
 

@@ -106,6 +106,16 @@ get_header() ?>
     </div>
 </section>
 
+<?php
+    $video = get_field('video');
+?>
+<?php if ($video): ?>
+    <section class="video-homepage">
+        <video autoplay loop muted playsinline class="video-desktop">
+            <source src="<?= $video['url'] ?>" type="video/mp4">
+        </video>
+    </section>
+<?php endif; ?>
 <section id="best-sellers">
     <!-- TO BE POPULATED BY INSIDER -->
 </section>
