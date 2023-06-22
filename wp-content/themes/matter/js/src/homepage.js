@@ -20,10 +20,6 @@
         dotCurrentActive.removeClass('dot-active');
         dotNext.addClass('dot-active');
 
-        dotCurrent.on('click', function (){
-            clearInterval(setTime)
-        })
-
     }
 
     if ($("#hero .slide").length > 1) {
