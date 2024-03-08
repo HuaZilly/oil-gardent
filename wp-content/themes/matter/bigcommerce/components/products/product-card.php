@@ -75,21 +75,33 @@ $rating = $component->render();
 <div class="bc-product__flip">
 <?php echo $title; ?>
 	<div class="bc-product__meta">
-		<div class="reviews">
-			<div data-bv-show="inline_rating" data-bv-product-id="<?php echo esc_html( $product->bc_id() ); ?>" data-bv-redirect-url="<?php the_permalink(  ); ?>"></div>
-		</div>
+        <div class="review">
+            <?php
+            $starRating = get_field('star_rating_bottomline', 'options');
+            ?>
+            <div class="rating-star">
+                <?php if ($starRating) :?>
+                    <?=
+                    str_replace('%product.id', $product->bc_id(), $starRating);
+                    ?>
+                <?php endif; ?>
+            </div>
+        </div>
 		<div class="bc-product__description"><?php echo ($excerpt !== "" && $excerpt !== NULL) ? "<p>".$excerpt."</p>" : ((strstr($product->description, "<p>") > -1) ? $product->description : "<p>".$product->description."</p>"); ?></div>
-		<?php echo $price; ?>
 	</div>
-	<?php if ( ! empty( $form ) ) { ?>
-		<!-- data-js="bc-product-group-actions" is required -->
-		<div class="bc-product__actions" data-js="bc-product-group-actions">
-			<?php echo $form; ?>
-			<?php //echo $wishlist ?>
-		</div>
-	<?php } else if ($product->out_of_stock()) { ?>
-		<div class="bc-product__actions">
-			<div class="btn disabled">Out Of Stock</div>
-		</div>
-	<?php } ?>
+    <div class="action-container">
+        <?php echo $price; ?>
+
+        <?php if ( ! empty( $form ) ) { ?>
+            <!-- data-js="bc-product-group-actions" is required -->
+            <div class="bc-product__actions" data-js="bc-product-group-actions">
+                <?php echo $form; ?>
+                <?php //echo $wishlist ?>
+            </div>
+        <?php } else if ($product->out_of_stock()) { ?>
+            <div class="bc-product__actions">
+                <div class="btn disabled">Out Of Stock</div>
+            </div>
+        <?php } ?>
+    </div>
 </div>

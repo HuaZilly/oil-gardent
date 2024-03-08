@@ -48,7 +48,26 @@ header {
     }
   }
 }
+.single-bigcommerce_product {
+  .yotpo.bottomLine.yotpo-small {
+    .yotpo-display-wrapper {
+      text-align: center;
+    }
 
+    .standalone-bottomline {
+      display: inline-block;
+    }
+  }
+}
+
+.bc-product__meta {
+  .bottomLine.yotpo-small {
+    .yotpo-bottomline.star-clickable {
+      float: none;
+      justify-content: center;
+    }
+  }
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1700px) {
   header {
@@ -276,5 +295,23 @@ header {
         display: none;
       }
     }
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .bc-product__meta {
+    .bottomLine.yotpo-small {
+      .yotpo-bottomline.star-clickable {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    .review {
+      margin-top: auto;
+    }
+  }
+  .action-container {
+    display: flex;
+    flex-direction: column;
   }
 }

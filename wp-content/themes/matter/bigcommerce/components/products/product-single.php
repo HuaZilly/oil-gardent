@@ -49,9 +49,17 @@ function traverseCats($term_id, $str = "") {
 				<div>					
 					<h1 class="bc-product__title" itemprop="name"><?php the_title(); ?></h1>					
 					<div class="bc-product-single__excerpt"><?php echo get_field('excerpt', $obj->ID); ?></div>
-					<div class="bc-single-product__ratings">
-						<div data-bv-show="rating_summary" data-bv-productId="<?php echo esc_html( $product->bc_id() ); ?>"></div>
-					</div>
+
+                    <?php
+                        $starRating = get_field('star_rating_bottomline', 'options');
+                    ?>
+                    <div class="yotpo bottomLine">
+                        <?php if ($starRating) :?>
+                            <?php echo
+                            str_replace('%product.id', $product->bc_id(), $starRating);
+                            ?>
+                        <?php endif; ?>
+                    </div>
 					<meta itemprop="sku" content="<?php echo $product->sku; ?>">
 					<meta itemprop="brand" content="Oil Garden">
 					<meta itemprop="description" content="<?php echo strip_tags($product->description); ?>">
@@ -133,11 +141,37 @@ function traverseCats($term_id, $str = "") {
 		<?php endforeach; endif; ?>
 	</div>
 </section>
+<?php
+    $productTag = get_field('product_tag','options');
+    $productId = esc_html( $product->bc_id() );
+?>
+<?php if ($productTag): ?>
+    <div><?= str_replace('product-id', $productId, $productTag) ?></div>
+<?php endif;?>
 
 <section class="bc-single-product__reviews" id="bc-single-product__reviews">
-	<div class="inner">
-		<div data-bv-show="reviews" data-bv-productId="<?php echo esc_html( $product->bc_id() ); ?>"></div>
-	</div>
+    <div class="inner">
+        <div class="col-lg-12 columns">
+            <?php
+            $yotpoWidget = get_field('review_widget','options');
+            $productLink = get_permalink();
+            ?>
+            <div class="row" id="reviews" >
+                <div class="col-lg-12 columns">
+                    <?php if ($yotpoWidget): ?>
+
+                        <?php echo
+                        str_replace(
+                            array('%product.id', '%product.title', '%product.url', '%product.featured_image', '%product.price', '%product.description'),
+                            array($product->bc_id(), $product->name, $productLink ,get_the_post_thumbnail_url() , $product->price_range(), strip_tags($product->description)),
+                            $yotpoWidget
+                        );
+                        ?>
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <section id="bc-single-product__related">
